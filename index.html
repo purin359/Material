@@ -112,22 +112,6 @@ button{
   position:relative;
 }
 
-.star-button{
-  position:absolute;
-  top:8px;
-  right:10px;
-  border:none;
-  background:transparent;
-  font-size:24px;
-  cursor:pointer;
-  color:#bbb;
-  z-index:2;
-}
-
-.star-button.star-on{
-  color:#f9a825;
-}
-
 .evolution{
   display:flex;
   gap:12px;
@@ -426,12 +410,6 @@ button{
     margin-top:0;
   }
 
-  .star-button{
-    font-size:13px;
-    top:0;
-    right:1px;
-  }
-
   #topButton{
     width:36px;
     height:36px;
@@ -478,11 +456,11 @@ button{
   >
 
   <button
-    id="starFilterButton"
-    onclick="toggleStarFilter()"
-  >
-    ☆表示
-  </button>
+  id="starFilterButton"
+  onclick="toggleStarFilter()"
+>
+  未進化
+</button>
 
   <select id="rarityFilter">
     <option value="">全レアリティ</option>
@@ -565,12 +543,26 @@ function renderList(){
       return false;
     }
 
-    if (
-      starFilterOnly &&
-      !isCharacterStarred(char)
-    ) {
-      return false;
-    }
+    if(starFilterOnly){
+
+  const hasUndone =
+    (char["進化"] || []).some(
+      (evo, index) => {
+
+        const key =
+          makeEvolutionKey(
+            char,
+            index
+          );
+
+        return !isEvolutionDone(key);
+      }
+    );
+
+  if(!hasUndone){
+    return false;
+  }
+}
 
     const charText =
       normalizeText([
@@ -1250,8 +1242,7 @@ function toggleCharacterStar(id){
 
 function toggleStarFilter(){
 
-  starFilterOnly =
-    !starFilterOnly;
+  starFilterOnly = !starFilterOnly;
 
   const button =
     document.getElementById(
@@ -1265,8 +1256,8 @@ function toggleStarFilter(){
 
   button.textContent =
     starFilterOnly
-      ? "★表示"
-      : "☆表示";
+      ? "未進化のみ"
+      : "未進化";
 
   renderList();
 }
