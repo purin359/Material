@@ -516,6 +516,8 @@ let imageData = {};
 let filteredCharacters = [];
 let starFilterOnly = false;
 let fourthOnly = false;
+const SUMMARY_STATE_KEY =
+  "nyanko_summary_state";
 
 Promise.all([
   fetch("materials.json").then(r => r.json()),
@@ -863,7 +865,13 @@ function updateSummary(targetCharacters){
 
   document.getElementById("summary").innerHTML = `
 
-    <div class="summary-group">
+    <div
+      class="
+        summary-group
+        ${loadSummaryState().total ? "closed" : ""}
+      "
+      data-key="total"
+    >
 
       <div
         class="summary-title"
@@ -878,7 +886,13 @@ function updateSummary(targetCharacters){
 
     </div>
 
-    <div class="summary-group">
+    <div
+      class="
+        summary-group
+        ${loadSummaryState().remaining ? "closed" : ""}
+      "
+      data-key="remaining"
+    >
 
       <div
         class="summary-title"
@@ -897,8 +911,21 @@ function updateSummary(targetCharacters){
 
   function toggleSummary(el){
 
-  el.parentElement
-    .classList.toggle("closed");
+  const group =
+    el.parentElement;
+
+  group.classList.toggle("closed");
+
+  const state =
+    loadSummaryState();
+
+  const key =
+    group.dataset.key;
+
+  state[key] =
+    group.classList.contains("closed");
+
+  saveSummaryState(state);
 }
   
 function makeSummaryItems(obj){
@@ -1433,6 +1460,30 @@ function scrollToTop(){
     top:0,
     behavior:"smooth"
   });
+}
+
+  function loadSummaryState(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        SUMMARY_STATE_KEY
+      )
+    ) || {};
+
+  }catch{
+
+    return {};
+  }
+}
+
+function saveSummaryState(state){
+
+  localStorage.setItem(
+    SUMMARY_STATE_KEY,
+    JSON.stringify(state)
+  );
 }
 </script>
 
