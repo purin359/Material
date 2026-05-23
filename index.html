@@ -618,60 +618,37 @@ function updateSummary(targetCharacters){
   const remaining = {};
 
   targetCharacters.forEach(char => {
+    (char["進化"] || []).forEach((evo, index) => {
+      const key = makeEvolutionKey(char, index);
+      const done = isEvolutionDone(key);
 
-    (char["進化"] || [])
-      .forEach((evo, index) => {
+      (evo["素材"] || []).forEach(m => {
+        const count = Number(m["個数"]) || 0;
 
-        const key =
-          makeEvolutionKey(char, index);
+        total[m["名前"]] = (total[m["名前"]] || 0) + count;
 
-        const done =
-          isEvolutionDone(key);
-
-        (evo["素材"] || [])
-          .forEach(m => {
-
-            const count =
-              Number(m["個数"]) || 0;
-
-            total[m["名前"]] =
-              (total[m["名前"]] || 0)
-              + count;
-
-            if (!done) {
-
-              remaining[m["名前"]] =
-                (remaining[m["名前"]] || 0)
-                + count;
-            }
-          });
+        if (!done) {
+          remaining[m["名前"]] = (remaining[m["名前"]] || 0) + count;
+        }
       });
+    });
   });
 
-  document.getElementById("summary")
-    .innerHTML = `
+  document.getElementById("summary").innerHTML = `
+    <div class="summary-title">
+      表示中の必要素材合計
+    </div>
 
-      <div class="summary-title">
-        表示中の必要素材合計
-      </div>
+    ${makeSummaryItems(total)}
 
-      <div class="summary-list">
-        ${makeSummaryItems(total)}
-      </div>
+    <div class="summary-title" style="margin-top:10px;">
+      未進化分の必要素材
+    </div>
 
-      <div
-        class="summary-title"
-        style="margin-top:10px;"
-      >
-        未進化分の必要素材
-      </div>
-
-      <div class="summary-list">
-        ${makeSummaryItems(remaining)}
-      </div>
-    `;
+    ${makeSummaryItems(remaining)}
+  `;
 }
-
+  
 function makeSummaryItems(obj){
 
   const materialOrder =
