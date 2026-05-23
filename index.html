@@ -226,6 +226,10 @@ button{
   z-index:9999;
 }
 
+  #fourthOnlyBtn.fourth-on{
+  background:#ff9800;
+}
+
 @media (max-width:600px){
 
   body{
@@ -555,6 +559,9 @@ function renderList(){
   const rarity =
     document.getElementById("rarityFilter").value;
 
+  // 合計数はレアリティだけ反映
+  updateSummary(getSummaryTargetCharacters());
+
   filteredCharacters = characters.filter(char => {
 
     if (
@@ -594,20 +601,11 @@ function renderList(){
       return false;
     }
 
-    if(fourthOnly){
+    const evolutionsToShow =
+      getEvolutionsToShow(char);
 
-  const hasFourth =
-    (char["進化"] || []).length >= 2;
-
-  if(!hasFourth){
-    return false;
-  }
-}
-
-    return true;
+    return evolutionsToShow.length > 0;
   });
-
-  updateSummary(getSummaryTargetCharacters());
 
   document.getElementById("countText")
     .textContent =
@@ -623,54 +621,32 @@ function renderList(){
 
   filteredCharacters.forEach(char => {
 
+    const evolutionsToShow =
+      getEvolutionsToShow(char);
+
     const card =
       document.createElement("div");
 
     card.className = "card";
 
-    const evolutionsToShow =
-  (char["進化"] || []).filter((evo, index) => {
-
-    if(fourthOnly && index !== 1){
-      return false;
-    }
-
-    if(!starFilterOnly){
-      return true;
-    }
-
-    const key =
-      makeEvolutionKey(char, index);
-
-    return !isEvolutionDone(key);
-  });
-
-if(evolutionsToShow.length === 0){
-  return;
-}
-
-card.innerHTML = `
-  ${evolutionsToShow
-    .map((evo) => {
-
-      const originalIndex =
-        char["進化"].indexOf(evo);
-
-      return makeEvolutionHtml(
-        char,
-        evo,
-        originalIndex,
-        materialSearch
-      );
-    })
-    .join("")
-  }
-`;
+    card.innerHTML = `
+      ${evolutionsToShow
+        .map(({ evo, index }) =>
+          makeEvolutionHtml(
+            char,
+            evo,
+            index,
+            materialSearch
+          )
+        )
+        .join("")
+      }
+    `;
 
     list.appendChild(card);
   });
 }
-
+  
   function getSummaryTargetCharacters(){
 
   const rarity =
@@ -1296,6 +1272,26 @@ function toggleStarFilter(){
     starFilterOnly
       ? "未進化のみ"
       : "未進化";
+
+  renderList();
+}
+
+  function toggleFourthOnly(){
+
+  fourthOnly = !fourthOnly;
+
+  const button =
+    document.getElementById("fourthOnlyBtn");
+
+  button.classList.toggle(
+    "fourth-on",
+    fourthOnly
+  );
+
+  button.textContent =
+    fourthOnly
+      ? "第四のみ"
+      : "第四のみ";
 
   renderList();
 }
