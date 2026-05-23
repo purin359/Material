@@ -543,27 +543,6 @@ function renderList(){
       return false;
     }
 
-    if(starFilterOnly){
-
-  const hasUndone =
-    (char["進化"] || []).some(
-      (evo, index) => {
-
-        const key =
-          makeEvolutionKey(
-            char,
-            index
-          );
-
-        return !isEvolutionDone(key);
-      }
-    );
-
-  if(!hasUndone){
-    return false;
-  }
-}
-
     const charText =
       normalizeText([
         char["ID"],
@@ -618,19 +597,40 @@ function renderList(){
 
     card.className = "card";
 
-    card.innerHTML = `      
-      ${(char["進化"] || [])
-        .map((evo, index) =>
-          makeEvolutionHtml(
-            char,
-            evo,
-            index,
-            materialSearch
-          )
-        )
-        .join("")
-      }
-    `;
+    const evolutionsToShow =
+  (char["進化"] || []).filter((evo, index) => {
+
+    if(!starFilterOnly){
+      return true;
+    }
+
+    const key =
+      makeEvolutionKey(char, index);
+
+    return !isEvolutionDone(key);
+  });
+
+if(evolutionsToShow.length === 0){
+  return;
+}
+
+card.innerHTML = `
+  ${evolutionsToShow
+    .map((evo) => {
+
+      const originalIndex =
+        char["進化"].indexOf(evo);
+
+      return makeEvolutionHtml(
+        char,
+        evo,
+        originalIndex,
+        materialSearch
+      );
+    })
+    .join("")
+  }
+`;
 
     list.appendChild(card);
   });
