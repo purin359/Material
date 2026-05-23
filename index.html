@@ -6,47 +6,272 @@
 <title>進化素材一覧</title>
 
 <style>
-body{font-family:sans-serif;padding:20px;background:#f7f7f7;color:#222;}
-.top-header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
-h1{font-size:26px;margin:0;}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;}
-input,select{font-size:16px;padding:10px;border-radius:8px;border:1px solid #ccc;}
-.search-input{width:170px;}
-button{font-size:14px;padding:8px 10px;border:none;border-radius:8px;background:#555;color:white;cursor:pointer;}
-.account-area{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;background:#f5f5f5;border:1px solid #ddd;border-radius:14px;}
-.summary,.card{background:white;border-radius:10px;padding:12px 16px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.08);}
-.summary-title{font-weight:bold;margin-bottom:6px;}
-.summary-list{display:flex;flex-wrap:wrap;gap:8px;}
-.summary-item{display:flex;align-items:center;gap:5px;background:#f1f1f1;border-radius:8px;padding:5px 8px;font-size:14px;}
-.summary-img{width:24px;height:24px;object-fit:contain;}
-.count{margin-bottom:10px;color:#555;}
-.card{position:relative;}
-.star-button{position:absolute;top:8px;right:10px;border:none;background:transparent;font-size:24px;cursor:pointer;color:#bbb;}
-.star-button.star-on{color:#f9a825;}
-.evolution{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eee;}
-.evolution:last-child{border-bottom:none;}
-.char-img{width:72px;height:72px;object-fit:contain;flex-shrink:0;}
-.name{font-size:19px;font-weight:bold;margin-bottom:4px;padding-right:35px;}
-.meta{color:#666;font-size:14px;margin-bottom:6px;}
-.material-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
-.material{width:92px;background:#f1f1f1;border-radius:9px;padding:7px;text-align:center;box-sizing:border-box;}
-.material.hit{border:3px solid #ff3b30;}
-.material-img{width:38px;height:38px;object-fit:contain;display:block;margin:0 auto 4px;}
-.material-name{font-size:12px;font-weight:bold;line-height:1.15;}
-.material-count{margin-top:3px;font-size:13px;color:#666;}
-.done-button{margin-top:4px;background:#4CAF50;}
-.done-button.done{background:#999;}
-.empty{color:#999;}
-#starFilterButton.star-filter-on{background:#f9a825;}
-.tools-link-button{display:flex;align-items:center;justify-content:center;padding:8px 10px;font-size:14px;font-weight:bold;color:#555;text-decoration:none;background:white;border:1px solid #ccc;border-radius:8px;}
-#topButton{position:fixed;right:18px;bottom:18px;width:52px;height:52px;border:none;border-radius:50%;background:#4CAF50;color:white;font-size:24px;font-weight:bold;box-shadow:0 3px 10px rgba(0,0,0,.25);z-index:9999;}
+body{
+  font-family:sans-serif;
+  padding:20px;
+  background:#f7f7f7;
+  color:#222;
+}
+
+.top-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+h1{
+  font-size:26px;
+  margin:0;
+}
+
+.controls{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+input,
+select{
+  font-size:16px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.search-input{
+  width:170px;
+}
+
+button{
+  font-size:14px;
+  padding:8px 10px;
+  border:none;
+  border-radius:8px;
+  background:#555;
+  color:white;
+  cursor:pointer;
+}
+
+.account-area{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:10px 12px;
+  background:#f5f5f5;
+  border:1px solid #ddd;
+  border-radius:14px;
+}
+
+.summary,
+.card{
+  background:white;
+  border-radius:10px;
+  padding:12px 16px;
+  margin-bottom:12px;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+}
+
+.summary-title{
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.summary-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.summary-item{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  background:#f1f1f1;
+  border-radius:8px;
+  padding:5px 8px;
+  font-size:14px;
+}
+
+.summary-img{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+}
+
+.count{
+  margin-bottom:10px;
+  color:#555;
+}
+
+.card{
+  position:relative;
+}
+
+.star-button{
+  position:absolute;
+  top:8px;
+  right:10px;
+  border:none;
+  background:transparent;
+  font-size:24px;
+  cursor:pointer;
+  color:#bbb;
+}
+
+.star-button.star-on{
+  color:#f9a825;
+}
+
+.evolution{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:8px 0;
+  border-bottom:1px solid #eee;
+}
+
+.evolution:last-child{
+  border-bottom:none;
+}
+
+.char-img{
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  flex-shrink:0;
+}
+
+.name{
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:4px;
+  padding-right:35px;
+}
+
+.meta{
+  color:#666;
+  font-size:14px;
+  margin-bottom:6px;
+}
+
+.material-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+.material{
+  width:72px;
+  background:#f1f1f1;
+  border-radius:9px;
+  padding:7px;
+  text-align:center;
+  box-sizing:border-box;
+}
+
+.material.hit{
+  border:3px solid #ff3b30;
+}
+
+.material-img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  display:block;
+  margin:0 auto 4px;
+}
+
+.material-count{
+  margin-top:3px;
+  font-size:13px;
+  color:#666;
+  font-weight:bold;
+}
+
+.done-button{
+  margin-top:4px;
+  background:#4CAF50;
+}
+
+.done-button.done{
+  background:#999;
+}
+
+.empty{
+  color:#999;
+}
+
+#starFilterButton.star-filter-on{
+  background:#f9a825;
+}
+
+.tools-link-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 10px;
+  font-size:14px;
+  font-weight:bold;
+  color:#555;
+  text-decoration:none;
+  background:white;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+#topButton{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:52px;
+  height:52px;
+  border:none;
+  border-radius:50%;
+  background:#4CAF50;
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+  box-shadow:0 3px 10px rgba(0,0,0,.25);
+  z-index:9999;
+}
+
 @media(max-width:600px){
-  body{padding:10px;}
-  h1{font-size:22px;}
-  .card{padding:12px;}
-  .char-img{width:64px;height:64px;}
-  .name{font-size:18px;}
-  .material{width:82px;}
+
+  body{
+    padding:10px;
+  }
+
+  h1{
+    font-size:22px;
+  }
+
+  .card{
+    padding:12px;
+  }
+
+  .char-img{
+    width:64px;
+    height:64px;
+  }
+
+  .name{
+    font-size:18px;
+  }
+
+  .material{
+    width:68px;
+  }
+
+  .material-img{
+    width:38px;
+    height:38px;
+  }
 }
 </style>
 </head>
@@ -54,30 +279,58 @@ button{font-size:14px;padding:8px 10px;border:none;border-radius:8px;background:
 <body>
 
 <div class="top-header">
+
   <h1>進化素材一覧</h1>
 
   <div class="account-area">
     <select id="accountSelect" onchange="changeAccount()"></select>
-    <button onclick="addAccount()">アカウント追加</button>
-    <button onclick="renameAccount()">名前変更</button>
+
+    <button onclick="addAccount()">
+      アカウント追加
+    </button>
+
+    <button onclick="renameAccount()">
+      名前変更
+    </button>
   </div>
+
 </div>
 
 <div class="controls">
-  <input id="charSearchInput" class="search-input" placeholder="キャラ名で検索">
-  <input id="materialSearchInput" class="search-input" placeholder="素材名で検索">
 
-  <button id="starFilterButton" onclick="toggleStarFilter()">☆表示</button>
+  <input
+    id="charSearchInput"
+    class="search-input"
+    placeholder="キャラ名で検索"
+  >
+
+  <input
+    id="materialSearchInput"
+    class="search-input"
+    placeholder="素材名で検索"
+  >
+
+  <button
+    id="starFilterButton"
+    onclick="toggleStarFilter()"
+  >
+    ☆表示
+  </button>
 
   <select id="rarityFilter">
     <option value="">全レアリティ</option>
   </select>
 
-  <a class="tools-link-button" href="Tools.html">その他</a>
+  <a class="tools-link-button" href="Tools.html">
+    その他
+  </a>
+
 </div>
 
 <div id="summary" class="summary"></div>
+
 <div id="countText" class="count"></div>
+
 <div id="list"></div>
 
 <button id="topButton" onclick="scrollToTop()">↑</button>
@@ -89,10 +342,12 @@ let filteredCharacters = [];
 let starFilterOnly = false;
 
 Promise.all([
-  fetch("materials.json").then(res => res.json()),
-  fetch("image.json").then(res => res.json())
+  fetch("materials.json").then(r => r.json()),
+  fetch("image.json").then(r => r.json())
 ])
+
 .then(([materials, images]) => {
+
   characters = materials;
   imageData = images;
 
@@ -100,173 +355,344 @@ Promise.all([
   renderAccountSelect();
   renderList();
 })
+
 .catch(err => {
+
   document.getElementById("list").innerHTML =
-    "<p class='empty'>materials.json または image.json を読み込めませんでした。</p>";
+    "<p class='empty'>JSONを読み込めませんでした。</p>";
+
   console.error(err);
 });
 
-document.getElementById("charSearchInput").addEventListener("input", renderList);
-document.getElementById("materialSearchInput").addEventListener("input", renderList);
-document.getElementById("rarityFilter").addEventListener("change", renderList);
+document.getElementById("charSearchInput")
+  .addEventListener("input", renderList);
+
+document.getElementById("materialSearchInput")
+  .addEventListener("input", renderList);
+
+document.getElementById("rarityFilter")
+  .addEventListener("change", renderList);
 
 function renderList(){
-  const list = document.getElementById("list");
+
+  const list =
+    document.getElementById("list");
+
   list.innerHTML = "";
 
-  const charSearch = normalizeText(document.getElementById("charSearchInput").value);
-  const materialSearch = normalizeText(document.getElementById("materialSearchInput").value);
-  const rarity = document.getElementById("rarityFilter").value;
-
-  filteredCharacters = characters.filter(char => {
-    if (rarity && char["レアリティ"] !== rarity) return false;
-    if (starFilterOnly && !isCharacterStarred(char)) return false;
-
-    const charText = normalizeText([
-      char["ID"],
-      char["レアリティ"],
-      ...(char["進化"] || []).map(e => e["キャラ名"])
-    ].join(" "));
-
-    const materialText = normalizeText(
-      (char["進化"] || [])
-        .flatMap(e => e["素材"] || [])
-        .map(m => m["名前"])
-        .join(" ")
+  const charSearch =
+    normalizeText(
+      document.getElementById("charSearchInput").value
     );
 
-    if (charSearch && !charText.includes(charSearch)) return false;
-    if (materialSearch && !materialText.includes(materialSearch)) return false;
+  const materialSearch =
+    normalizeText(
+      document.getElementById("materialSearchInput").value
+    );
+
+  const rarity =
+    document.getElementById("rarityFilter").value;
+
+  filteredCharacters = characters.filter(char => {
+
+    if (
+      rarity &&
+      char["レアリティ"] !== rarity
+    ) {
+      return false;
+    }
+
+    if (
+      starFilterOnly &&
+      !isCharacterStarred(char)
+    ) {
+      return false;
+    }
+
+    const charText =
+      normalizeText([
+        char["ID"],
+        char["レアリティ"],
+        ...(char["進化"] || [])
+          .map(e => e["キャラ名"])
+      ].join(" "));
+
+    const materialText =
+      normalizeText(
+        (char["進化"] || [])
+          .flatMap(e => e["素材"] || [])
+          .map(m => m["名前"])
+          .join(" ")
+      );
+
+    if (
+      charSearch &&
+      !charText.includes(charSearch)
+    ) {
+      return false;
+    }
+
+    if (
+      materialSearch &&
+      !materialText.includes(materialSearch)
+    ) {
+      return false;
+    }
 
     return true;
   });
 
   updateSummary(filteredCharacters);
 
-  document.getElementById("countText").textContent =
-    `${filteredCharacters.length}件表示`;
+  document.getElementById("countText")
+    .textContent =
+      `${filteredCharacters.length}件表示`;
 
   if (filteredCharacters.length === 0) {
-    list.innerHTML = "<p class='empty'>該当するキャラがありません。</p>";
+
+    list.innerHTML =
+      "<p class='empty'>該当するキャラがありません。</p>";
+
     return;
   }
 
   filteredCharacters.forEach(char => {
-    const card = document.createElement("div");
+
+    const card =
+      document.createElement("div");
+
     card.className = "card";
 
     card.innerHTML = `
       <button
-        class="star-button ${isCharacterStarred(char) ? "star-on" : ""}"
-        onclick="toggleCharacterStar('${escapeAttr(char["ID"])}')"
+        class="star-button
+          ${isCharacterStarred(char)
+            ? "star-on"
+            : ""
+          }
+        "
+
+        onclick="
+          toggleCharacterStar(
+            '${escapeAttr(char["ID"])}'
+          )
+        "
       >
-        ${isCharacterStarred(char) ? "★" : "☆"}
+        ${
+          isCharacterStarred(char)
+            ? "★"
+            : "☆"
+        }
       </button>
 
       <div class="meta">
-        ID：${escapeHtml(char["ID"])} / ${escapeHtml(char["レアリティ"])}
+        ID：
+        ${escapeHtml(char["ID"])}
+        /
+        ${escapeHtml(char["レアリティ"])}
       </div>
 
-      ${(char["進化"] || []).map((evo, index) =>
-        makeEvolutionHtml(char, evo, index, materialSearch)
-      ).join("")}
+      ${(char["進化"] || [])
+        .map((evo, index) =>
+          makeEvolutionHtml(
+            char,
+            evo,
+            index,
+            materialSearch
+          )
+        )
+        .join("")
+      }
     `;
 
     list.appendChild(card);
   });
 }
 
-function makeEvolutionHtml(char, evo, index, materialSearch){
-  const key = makeEvolutionKey(char, index);
-  const done = isEvolutionDone(key);
+function makeEvolutionHtml(
+  char,
+  evo,
+  index,
+  materialSearch
+){
+
+  const key =
+    makeEvolutionKey(char, index);
+
+  const done =
+    isEvolutionDone(key);
 
   return `
     <div class="evolution">
+
       <img
         class="char-img"
+
         src="${escapeHtml(evo["画像名"])}"
-        alt="${escapeHtml(evo["キャラ名"])}"
-        onerror="this.src='image/noimage.png'"
+
+        onerror="
+          this.src='image/noimage.png'
+        "
       >
 
       <div>
-        <div class="name">${escapeHtml(evo["キャラ名"])}</div>
+
+        <div class="name">
+          ${escapeHtml(evo["キャラ名"])}
+        </div>
 
         <button
-          class="done-button ${done ? "done" : ""}"
-          onclick="toggleEvolutionDone('${escapeAttr(key)}')"
+          class="
+            done-button
+            ${done ? "done" : ""}
+          "
+
+          onclick="
+            toggleEvolutionDone(
+              '${escapeAttr(key)}'
+            )
+          "
         >
-          ${done ? "進化済み" : "未進化"}
+          ${
+            done
+              ? "進化済み"
+              : "未進化"
+          }
         </button>
 
         <div class="material-row">
-          ${(evo["素材"] || []).map(m => {
-            const hit =
-              materialSearch &&
-              normalizeText(m["名前"]).includes(materialSearch);
 
-            return `
-              <div class="material ${hit ? "hit" : ""}">
-                <img
-                  class="material-img"
-                  src="${escapeHtml(getMaterialImage(m["名前"]))}"
-                  alt="${escapeHtml(m["名前"])}"
-                  onerror="this.src='image/noimage.png'"
+          ${(evo["素材"] || [])
+            .map(m => {
+
+              const hit =
+                materialSearch &&
+                normalizeText(m["名前"])
+                  .includes(materialSearch);
+
+              return `
+                <div
+                  class="
+                    material
+                    ${hit ? "hit" : ""}
+                  "
                 >
-                <div class="material-name">${escapeHtml(m["名前"])}</div>
-                <div class="material-count">×${escapeHtml(m["個数"])}</div>
-              </div>
-            `;
-          }).join("")}
+
+                  <img
+                    class="material-img"
+
+                    src="
+                      ${escapeHtml(
+                        getMaterialImage(
+                          m["名前"]
+                        )
+                      )}
+                    "
+
+                    onerror="
+                      this.src='image/noimage.png'
+                    "
+                  >
+
+                  <div class="material-count">
+                    ×${escapeHtml(m["個数"])}
+                  </div>
+
+                </div>
+              `;
+            })
+            .join("")
+          }
+
         </div>
+
       </div>
+
     </div>
   `;
 }
 
 function updateSummary(targetCharacters){
+
   const total = {};
   const remaining = {};
 
   targetCharacters.forEach(char => {
-    (char["進化"] || []).forEach((evo, index) => {
-      const key = makeEvolutionKey(char, index);
-      const done = isEvolutionDone(key);
 
-      (evo["素材"] || []).forEach(m => {
-        const count = Number(m["個数"]) || 0;
+    (char["進化"] || [])
+      .forEach((evo, index) => {
 
-        total[m["名前"]] = (total[m["名前"]] || 0) + count;
+        const key =
+          makeEvolutionKey(char, index);
 
-        if (!done) {
-          remaining[m["名前"]] = (remaining[m["名前"]] || 0) + count;
-        }
+        const done =
+          isEvolutionDone(key);
+
+        (evo["素材"] || [])
+          .forEach(m => {
+
+            const count =
+              Number(m["個数"]) || 0;
+
+            total[m["名前"]] =
+              (total[m["名前"]] || 0)
+              + count;
+
+            if (!done) {
+
+              remaining[m["名前"]] =
+                (remaining[m["名前"]] || 0)
+                + count;
+            }
+          });
       });
-    });
   });
 
-  document.getElementById("summary").innerHTML = `
-    <div class="summary-title">表示中の必要素材合計</div>
-    <div class="summary-list">
-      ${makeSummaryItems(total)}
-    </div>
+  document.getElementById("summary")
+    .innerHTML = `
 
-    <div class="summary-title" style="margin-top:10px;">未進化分の必要素材</div>
-    <div class="summary-list">
-      ${makeSummaryItems(remaining)}
-    </div>
-  `;
+      <div class="summary-title">
+        表示中の必要素材合計
+      </div>
+
+      <div class="summary-list">
+        ${makeSummaryItems(total)}
+      </div>
+
+      <div
+        class="summary-title"
+        style="margin-top:10px;"
+      >
+        未進化分の必要素材
+      </div>
+
+      <div class="summary-list">
+        ${makeSummaryItems(remaining)}
+      </div>
+    `;
 }
 
 function makeSummaryItems(obj){
-  const materialOrder = Object.keys(imageData);
 
-  const entries = materialOrder
-    .filter(name => obj[name])
-    .map(name => [name, obj[name]]);
+  const materialOrder =
+    Object.keys(imageData);
 
-  const extraEntries = Object.entries(obj)
-    .filter(([name]) => !imageData[name]);
+  const entries =
+    materialOrder
+
+      .filter(name => obj[name])
+
+      .map(name => [
+        name,
+        obj[name]
+      ]);
+
+  const extraEntries =
+    Object.entries(obj)
+
+      .filter(([name]) =>
+        !imageData[name]
+      );
 
   const allEntries = [
     ...entries,
@@ -274,23 +700,44 @@ function makeSummaryItems(obj){
   ];
 
   if (allEntries.length === 0) {
-    return `<span class="empty">なし</span>`;
+    return `
+      <span class="empty">
+        なし
+      </span>
+    `;
   }
 
-  return allEntries.map(([name, count]) => `
-    <div class="summary-item">
-      <img
-        class="summary-img"
-        src="${escapeHtml(getMaterialImage(name))}"
-        onerror="this.src='image/noimage.png'"
-      >
-      <span>${escapeHtml(name)}：${count}</span>
-    </div>
-  `).join("");
+  return allEntries
+    .map(([name, count]) => `
+      <div class="summary-item">
+
+        <img
+          class="summary-img"
+
+          src="
+            ${escapeHtml(
+              getMaterialImage(name)
+            )}
+          "
+
+          onerror="
+            this.src='image/noimage.png'
+          "
+        >
+
+        <span>
+          ×${count}
+        </span>
+
+      </div>
+    `)
+    .join("");
 }
 
 function getMaterialImage(name){
-  const data = imageData[name];
+
+  const data =
+    imageData[name];
 
   if (typeof data === "string") {
     return data;
@@ -304,211 +751,399 @@ function getMaterialImage(name){
 }
 
 function setupRarityFilter(){
-  const select = document.getElementById("rarityFilter");
 
-  const rarities = [...new Set(
-    characters.map(c => c["レアリティ"]).filter(Boolean)
-  )];
+  const select =
+    document.getElementById("rarityFilter");
+
+  const rarities =
+    [...new Set(
+
+      characters
+        .map(c => c["レアリティ"])
+        .filter(Boolean)
+
+    )];
 
   rarities.forEach(rarity => {
-    const option = document.createElement("option");
+
+    const option =
+      document.createElement("option");
+
     option.value = rarity;
     option.textContent = rarity;
+
     select.appendChild(option);
   });
 }
 
 function makeEvolutionKey(char, index){
-  const evo = char["進化"][index];
-  return `${char["ID"]}_${evo["キャラ名"]}_${index}`;
+
+  const evo =
+    char["進化"][index];
+
+  return `
+    ${char["ID"]}_${evo["キャラ名"]}_${index}
+  `;
 }
 
 function loadDoneData(){
+
   try {
-    return JSON.parse(localStorage.getItem(getDoneSaveKey())) || {};
+
+    return JSON.parse(
+      localStorage.getItem(
+        getDoneSaveKey()
+      )
+    ) || {};
+
   } catch {
+
     return {};
   }
 }
 
 function saveDoneData(data){
-  localStorage.setItem(getDoneSaveKey(), JSON.stringify(data));
+
+  localStorage.setItem(
+    getDoneSaveKey(),
+    JSON.stringify(data)
+  );
 }
 
 function isEvolutionDone(key){
+
   return !!loadDoneData()[key];
 }
 
 function toggleEvolutionDone(key){
-  const data = loadDoneData();
+
+  const data =
+    loadDoneData();
 
   if (data[key]) {
+
     delete data[key];
+
   } else {
+
     data[key] = true;
   }
 
   saveDoneData(data);
+
   renderList();
 }
 
-const ACCOUNT_LIST_KEY = "nyanko_evolution_accounts";
-const CURRENT_ACCOUNT_KEY = "nyanko_evolution_current_account";
+const ACCOUNT_LIST_KEY =
+  "nyanko_evolution_accounts";
+
+const CURRENT_ACCOUNT_KEY =
+  "nyanko_evolution_current_account";
 
 initAccounts();
 
 function getCurrentAccountId(){
-  return localStorage.getItem(CURRENT_ACCOUNT_KEY) || "account_1";
+
+  return localStorage.getItem(
+    CURRENT_ACCOUNT_KEY
+  ) || "account_1";
 }
 
 function getDoneSaveKey(){
-  return `nyanko_evolution_done_${getCurrentAccountId()}`;
+
+  return `
+    nyanko_evolution_done_
+    ${getCurrentAccountId()}
+  `;
 }
 
 function getStarSaveKey(){
-  return `nyanko_evolution_star_${getCurrentAccountId()}`;
+
+  return `
+    nyanko_evolution_star_
+    ${getCurrentAccountId()}
+  `;
 }
 
 function loadAccounts(){
+
   try {
-    return JSON.parse(localStorage.getItem(ACCOUNT_LIST_KEY)) || [];
+
+    return JSON.parse(
+      localStorage.getItem(
+        ACCOUNT_LIST_KEY
+      )
+    ) || [];
+
   } catch {
+
     return [];
   }
 }
 
 function saveAccounts(accounts){
-  localStorage.setItem(ACCOUNT_LIST_KEY, JSON.stringify(accounts));
+
+  localStorage.setItem(
+    ACCOUNT_LIST_KEY,
+    JSON.stringify(accounts)
+  );
 }
 
 function initAccounts(){
-  let accounts = loadAccounts();
+
+  let accounts =
+    loadAccounts();
 
   if (accounts.length === 0) {
+
     accounts = [
-      { id:"account_1", name:"アカウント1" },
-      { id:"account_2", name:"アカウント2" }
+
+      {
+        id:"account_1",
+        name:"アカウント1"
+      },
+
+      {
+        id:"account_2",
+        name:"アカウント2"
+      }
     ];
 
     saveAccounts(accounts);
-    localStorage.setItem(CURRENT_ACCOUNT_KEY, "account_1");
+
+    localStorage.setItem(
+      CURRENT_ACCOUNT_KEY,
+      "account_1"
+    );
   }
 }
 
 function renderAccountSelect(){
-  const select = document.getElementById("accountSelect");
+
+  const select =
+    document.getElementById(
+      "accountSelect"
+    );
+
   if (!select) return;
 
-  const accounts = loadAccounts();
-  const currentId = getCurrentAccountId();
+  const accounts =
+    loadAccounts();
+
+  const currentId =
+    getCurrentAccountId();
 
   select.innerHTML = "";
 
   accounts.forEach(account => {
-    const option = document.createElement("option");
+
+    const option =
+      document.createElement("option");
+
     option.value = account.id;
     option.textContent = account.name;
-    option.selected = account.id === currentId;
+
+    option.selected =
+      account.id === currentId;
+
     select.appendChild(option);
   });
 }
 
 function changeAccount(){
-  const select = document.getElementById("accountSelect");
-  localStorage.setItem(CURRENT_ACCOUNT_KEY, select.value);
+
+  const select =
+    document.getElementById(
+      "accountSelect"
+    );
+
+  localStorage.setItem(
+    CURRENT_ACCOUNT_KEY,
+    select.value
+  );
+
   renderList();
 }
 
 function addAccount(){
-  const accounts = loadAccounts();
-  const name = prompt("追加するアカウント名を入力してください", `アカウント${accounts.length + 1}`);
+
+  const accounts =
+    loadAccounts();
+
+  const name = prompt(
+    "追加するアカウント名を入力してください",
+
+    `アカウント${accounts.length + 1}`
+  );
+
   if (!name) return;
 
-  const id = `account_${Date.now()}`;
+  const id =
+    `account_${Date.now()}`;
 
-  accounts.push({ id, name });
+  accounts.push({
+    id,
+    name
+  });
+
   saveAccounts(accounts);
-  localStorage.setItem(CURRENT_ACCOUNT_KEY, id);
+
+  localStorage.setItem(
+    CURRENT_ACCOUNT_KEY,
+    id
+  );
 
   renderAccountSelect();
   renderList();
 }
 
 function renameAccount(){
-  const accounts = loadAccounts();
-  const currentId = getCurrentAccountId();
-  const account = accounts.find(a => a.id === currentId);
+
+  const accounts =
+    loadAccounts();
+
+  const currentId =
+    getCurrentAccountId();
+
+  const account =
+    accounts.find(
+      a => a.id === currentId
+    );
+
   if (!account) return;
 
-  const name = prompt("アカウント名を変更してください", account.name);
+  const name = prompt(
+    "アカウント名を変更してください",
+    account.name
+  );
+
   if (!name) return;
 
   account.name = name;
+
   saveAccounts(accounts);
+
   renderAccountSelect();
 }
 
 function loadStarCharacters(){
+
   try {
-    return JSON.parse(localStorage.getItem(getStarSaveKey())) || {};
+
+    return JSON.parse(
+      localStorage.getItem(
+        getStarSaveKey()
+      )
+    ) || {};
+
   } catch {
+
     return {};
   }
 }
 
 function saveStarCharacters(data){
-  localStorage.setItem(getStarSaveKey(), JSON.stringify(data));
+
+  localStorage.setItem(
+    getStarSaveKey(),
+    JSON.stringify(data)
+  );
 }
 
 function makeCharacterStarKey(char){
+
   return `${char["ID"]}`;
 }
 
 function isCharacterStarred(char){
-  return !!loadStarCharacters()[makeCharacterStarKey(char)];
+
+  return !!loadStarCharacters()[
+    makeCharacterStarKey(char)
+  ];
 }
 
 function toggleCharacterStar(id){
-  const char = characters.find(c => String(c["ID"]) === String(id));
+
+  const char =
+    characters.find(
+      c => String(c["ID"])
+      === String(id)
+    );
+
   if (!char) return;
 
-  const data = loadStarCharacters();
-  const key = makeCharacterStarKey(char);
+  const data =
+    loadStarCharacters();
+
+  const key =
+    makeCharacterStarKey(char);
 
   if (data[key]) {
+
     delete data[key];
+
   } else {
+
     data[key] = true;
   }
 
   saveStarCharacters(data);
+
   renderList();
 }
 
 function toggleStarFilter(){
-  starFilterOnly = !starFilterOnly;
 
-  const button = document.getElementById("starFilterButton");
+  starFilterOnly =
+    !starFilterOnly;
 
-  button.classList.toggle("star-filter-on", starFilterOnly);
-  button.textContent = starFilterOnly ? "★表示" : "☆表示";
+  const button =
+    document.getElementById(
+      "starFilterButton"
+    );
+
+  button.classList.toggle(
+    "star-filter-on",
+    starFilterOnly
+  );
+
+  button.textContent =
+    starFilterOnly
+      ? "★表示"
+      : "☆表示";
 
   renderList();
 }
 
 function normalizeText(text){
+
   return String(text ?? "")
+
     .normalize("NFKC")
-    .replace(/[\u30A1-\u30F6]/g, ch =>
-      String.fromCharCode(ch.charCodeAt(0) - 0x60)
+
+    .replace(
+      /[\u30A1-\u30F6]/g,
+
+      ch =>
+        String.fromCharCode(
+          ch.charCodeAt(0) - 0x60
+        )
     )
+
     .toLowerCase()
+
     .replace(/\s+/g, "")
-    .replace(/[‐-‒–—―ー]/g, "-");
+
+    .replace(
+      /[‐-‒–—―ー]/g,
+      "-"
+    );
 }
 
 function escapeHtml(text){
+
   return String(text ?? "")
+
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
@@ -517,10 +1152,12 @@ function escapeHtml(text){
 }
 
 function escapeAttr(text){
+
   return escapeHtml(text);
 }
 
 function scrollToTop(){
+
   window.scrollTo({
     top:0,
     behavior:"smooth"
