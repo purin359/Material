@@ -679,20 +679,12 @@ function makeSummaryItems(obj){
 
   const entries =
     materialOrder
-
       .filter(name => obj[name])
-
-      .map(name => [
-        name,
-        obj[name]
-      ]);
+      .map(name => [name, obj[name]]);
 
   const extraEntries =
     Object.entries(obj)
-
-      .filter(([name]) =>
-        !imageData[name]
-      );
+      .filter(([name]) => !imageData[name]);
 
   const allEntries = [
     ...entries,
@@ -708,13 +700,13 @@ function makeSummaryItems(obj){
   }
 
   let html = "";
-
-  let currentGroup = "";
+  let currentGroup = null;
 
   allEntries.forEach(([name, count]) => {
 
     let group = "";
 
+    // 順番重要
     if (name.includes("獣結晶")) {
       group = "獣結晶";
     }
@@ -728,13 +720,15 @@ function makeSummaryItems(obj){
       group = "マタタビ";
     }
 
-    // グループ切替時改行
+    // グループ切替
     if (group !== currentGroup) {
 
-      if (currentGroup !== "") {
+      // 前グループ閉じる
+      if (currentGroup !== null) {
         html += `</div>`;
       }
 
+      // 新グループ開始
       html += `
         <div
           class="summary-list"
@@ -750,16 +744,8 @@ function makeSummaryItems(obj){
 
         <img
           class="summary-img"
-
-          src="
-            ${escapeHtml(
-              getMaterialImage(name)
-            )}
-          "
-
-          onerror="
-            this.src='image/noimage.png'
-          "
+          src="${escapeHtml(getMaterialImage(name))}"
+          onerror="this.src='image/noimage.png'"
         >
 
         <span>
@@ -770,6 +756,7 @@ function makeSummaryItems(obj){
     `;
   });
 
+  // 最後閉じる
   html += `</div>`;
 
   return html;
