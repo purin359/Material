@@ -243,128 +243,162 @@ button{
 
 @media (max-width: 600px) {
 
-  body {
-    padding: 10px;
+  body{
+    padding:8px;
   }
 
-  h1 {
-    font-size: 22px;
+  h1{
+    font-size:20px;
   }
 
   .top-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
     gap:8px;
-    margin-bottom:10px;
+    flex-wrap:nowrap;
+    margin-bottom:8px;
   }
 
   .account-area{
-    padding:8px;
-    gap:6px;
-    border-radius:12px;
+    padding:5px;
+    gap:4px;
   }
 
-  .account-area button,
   .account-area select{
-    font-size:12px;
-    padding:7px 8px;
+    width:90px;
+    font-size:11px;
+    padding:5px;
+  }
+
+  .account-area button{
+    font-size:10px;
+    padding:5px 6px;
   }
 
   .controls{
-    gap:8px;
-    margin-bottom:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:8px;
   }
 
   .search-input{
-    width:150px;
+    width:145px;
+    font-size:12px;
+    padding:7px;
   }
 
   .controls button,
   .controls select,
-  .tools-link-button,
-  input{
-    font-size:13px;
-    padding:8px;
+  .tools-link-button{
+    font-size:12px;
+    padding:7px 9px;
+    width:auto;
   }
 
   .summary{
-    padding:10px 12px;
-    margin-bottom:10px;
-  }
-
-  .summary-title{
-    font-size:15px;
-    margin-bottom:5px;
-  }
-
-  .summary-list{
-    gap:6px;
-    margin-bottom:8px !important;
-  }
-
-  .summary-item{
-    padding:4px 7px;
-    border-radius:7px;
-    font-size:12px;
-    gap:4px;
-  }
-
-  .summary-img{
-    width:22px;
-    height:22px;
-  }
-
-  .count{
-    font-size:14px;
+    padding:8px 10px;
     margin-bottom:8px;
   }
 
+  .summary-title{
+    font-size:14px;
+    margin-bottom:4px;
+  }
+
+  .summary-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+    margin-bottom:6px !important;
+  }
+
+  .summary-item{
+    padding:3px 6px;
+    gap:3px;
+    font-size:11px;
+  }
+
+  .summary-img{
+    width:20px;
+    height:20px;
+  }
+
+  .count{
+    font-size:13px;
+    margin-bottom:6px;
+  }
+
   .card{
-    padding:10px 12px;
-    margin-bottom:10px;
-    border-radius:12px;
+    padding:8px 10px;
+    margin-bottom:8px;
+    border-radius:10px;
+  }
+
+  .meta{
+    font-size:12px;
+    margin-bottom:4px;
   }
 
   .evolution{
+    display:flex;
+    align-items:flex-start;
     gap:8px;
     padding:4px 0;
   }
 
   .char-img{
-    width:58px;
-    height:58px;
+    width:50px;
+    height:50px;
+  }
+
+  .evolution > div{
+    flex:1;
+    min-width:0;
   }
 
   .name{
-    font-size:17px;
+    font-size:16px;
     margin-bottom:2px;
-    line-height:1.2;
-  }
+    padding-right:28px;
 
-  .meta{
-    font-size:13px;
-    margin-bottom:4px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
   }
 
   .done-button{
-    font-size:12px;
-    padding:5px 8px;
+    font-size:11px;
+    padding:4px 8px;
     border-radius:7px;
+    margin-top:0;
+    margin-bottom:3px;
   }
 
   .material-row{
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+
     gap:5px;
-    margin-top:5px;
+    margin-top:3px;
+    padding-bottom:2px;
   }
 
   .material{
-    width:54px;
-    padding:5px;
+    width:46px;
+    min-width:46px;
+    padding:4px;
     border-radius:7px;
+    flex:0 0 auto;
   }
 
   .material-img{
-    width:30px;
-    height:30px;
-    margin-bottom:2px;
+    width:27px;
+    height:27px;
+    margin-bottom:1px;
   }
 
   .material-count{
@@ -373,17 +407,17 @@ button{
   }
 
   .star-button{
-    top:6px;
-    right:7px;
-    font-size:22px;
+    top:5px;
+    right:6px;
+    font-size:20px;
   }
 
   #topButton{
-    width:48px;
-    height:48px;
-    font-size:22px;
-    right:14px;
-    bottom:14px;
+    width:44px;
+    height:44px;
+    font-size:20px;
+    right:12px;
+    bottom:12px;
   }
 }
 </style>
