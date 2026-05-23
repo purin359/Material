@@ -466,6 +466,10 @@ button{
     <option value="">全レアリティ</option>
   </select>
 
+  <button id="fourthOnlyBtn">
+  第四のみ
+</button>
+
 </div>
 
 <div id="summary" class="summary"></div>
@@ -481,6 +485,7 @@ let characters = [];
 let imageData = {};
 let filteredCharacters = [];
 let starFilterOnly = false;
+let fourthOnly = false;
 
 Promise.all([
   fetch("materials.json").then(r => r.json()),
@@ -513,6 +518,22 @@ document.getElementById("materialSearchInput")
 
 document.getElementById("rarityFilter")
   .addEventListener("change", renderList);
+
+document
+  .getElementById("fourthOnlyBtn")
+  .addEventListener("click", () => {
+
+    fourthOnly = !fourthOnly;
+
+    document
+      .getElementById("fourthOnlyBtn")
+      .classList.toggle(
+        "active",
+        fourthOnly
+      );
+
+    renderList();
+  });
 
 function renderList(){
 
@@ -573,6 +594,16 @@ function renderList(){
       return false;
     }
 
+    if(fourthOnly){
+
+  const hasFourth =
+    (char["進化"] || []).length >= 2;
+
+  if(!hasFourth){
+    return false;
+  }
+}
+
     return true;
   });
 
@@ -599,6 +630,10 @@ function renderList(){
 
     const evolutionsToShow =
   (char["進化"] || []).filter((evo, index) => {
+
+    if(fourthOnly && index !== 1){
+      return false;
+    }
 
     if(!starFilterOnly){
       return true;
