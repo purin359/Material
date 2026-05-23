@@ -241,127 +241,34 @@ button{
   z-index:9999;
 }
 
-@media (max-width: 600px) {
-
-  body{
-    padding:8px;
-  }
-
-  h1{
-    font-size:20px;
-  }
-
-  .top-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    flex-wrap:nowrap;
-    margin-bottom:8px;
-  }
-
-  .account-area{
-    padding:5px;
-    gap:4px;
-  }
-
-  .account-area select{
-    width:90px;
-    font-size:11px;
-    padding:5px;
-  }
-
-  .account-area button{
-    font-size:10px;
-    padding:5px 6px;
-  }
-
-  .controls{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-bottom:8px;
-  }
-
-  .search-input{
-    width:145px;
-    font-size:12px;
-    padding:7px;
-  }
-
-  .controls button,
-  .controls select,
-  .tools-link-button{
-    font-size:12px;
-    padding:7px 9px;
-    width:auto;
-  }
-
-  .summary{
-    padding:8px 10px;
-    margin-bottom:8px;
-  }
-
-  .summary-title{
-    font-size:14px;
-    margin-bottom:4px;
-  }
-
-  .summary-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:4px;
-    margin-bottom:6px !important;
-  }
-
-  .summary-item{
-    padding:3px 6px;
-    gap:3px;
-    font-size:11px;
-  }
-
-  .summary-img{
-    width:20px;
-    height:20px;
-  }
-
-  .count{
-    font-size:13px;
-    margin-bottom:6px;
-  }
+@media (max-width:600px){
 
   .card{
-    padding:8px 10px;
-    margin-bottom:8px;
+    padding:6px 8px;
+    margin-bottom:6px;
     border-radius:10px;
   }
 
-  .meta{
-    font-size:12px;
-    margin-bottom:4px;
-  }
-
   .evolution{
-    display:flex;
+    gap:6px;
+    padding:2px 0;
     align-items:flex-start;
-    gap:8px;
-    padding:4px 0;
   }
 
   .char-img{
-    width:50px;
-    height:50px;
+    width:46px;
+    height:46px;
   }
 
-  .evolution > div{
-    flex:1;
-    min-width:0;
+  .meta{
+    font-size:11px;
+    margin-bottom:1px;
   }
 
   .name{
-    font-size:16px;
-    margin-bottom:2px;
-    padding-right:28px;
+    font-size:14px;
+    line-height:1.1;
+    margin-bottom:1px;
 
     overflow:hidden;
     text-overflow:ellipsis;
@@ -369,55 +276,53 @@ button{
   }
 
   .done-button{
-    font-size:11px;
-    padding:4px 8px;
-    border-radius:7px;
-    margin-top:0;
-    margin-bottom:3px;
+    font-size:10px;
+    padding:2px 7px;
+    border-radius:6px;
+
+    min-height:auto;
+    line-height:1.3;
+
+    margin:0;
   }
 
   .material-row{
-    display:flex;
+    gap:3px;
+    margin-top:2px;
+
     flex-wrap:nowrap;
     overflow-x:auto;
     overflow-y:hidden;
 
-    gap:5px;
-    margin-top:3px;
-    padding-bottom:2px;
+    padding-bottom:1px;
   }
 
   .material{
-    width:46px;
-    min-width:46px;
-    padding:4px;
-    border-radius:7px;
-    flex:0 0 auto;
+    width:40px;
+    min-width:40px;
+
+    padding:3px;
+
+    border-radius:6px;
   }
 
   .material-img{
-    width:27px;
-    height:27px;
-    margin-bottom:1px;
+    width:22px;
+    height:22px;
+
+    margin-bottom:0;
   }
 
   .material-count{
-    font-size:11px;
-    margin-top:0;
+    font-size:10px;
+    line-height:1;
   }
 
   .star-button{
-    top:5px;
-    right:6px;
-    font-size:20px;
-  }
+    font-size:18px;
 
-  #topButton{
-    width:44px;
-    height:44px;
-    font-size:20px;
-    right:12px;
-    bottom:12px;
+    top:2px;
+    right:4px;
   }
 }
 </style>
