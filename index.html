@@ -651,14 +651,7 @@ function renderList(){
             : "☆"
         }
       </button>
-
-      <div class="meta">
-        ID：
-        ${escapeHtml(char["ID"])}
-        /
-        ${escapeHtml(char["レアリティ"])}
-      </div>
-
+      
       ${(char["進化"] || [])
         .map((evo, index) =>
           makeEvolutionHtml(
