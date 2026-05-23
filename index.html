@@ -532,10 +532,10 @@ document
     document
       .getElementById("fourthOnlyBtn")
       .classList.toggle(
-        "active",
-        fourthOnly
-      );
-
+      "fourth-on",
+      fourthOnly
+    );
+    
     renderList();
   });
 
@@ -645,6 +645,33 @@ function renderList(){
 
     list.appendChild(card);
   });
+}
+
+  function getEvolutionsToShow(char){
+
+  return (char["進化"] || [])
+    .map((evo, index) => ({
+      evo,
+      index
+    }))
+    .filter(({ evo, index }) => {
+
+      if (
+        fourthOnly &&
+        index !== 1
+      ) {
+        return false;
+      }
+
+      if (starFilterOnly) {
+        const key =
+          makeEvolutionKey(char, index);
+
+        return !isEvolutionDone(key);
+      }
+
+      return true;
+    });
 }
   
   function getSummaryTargetCharacters(){
