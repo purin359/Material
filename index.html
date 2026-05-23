@@ -618,28 +618,7 @@ function renderList(){
 
     card.className = "card";
 
-    card.innerHTML = `
-      <button
-        class="star-button
-          ${isCharacterStarred(char)
-            ? "star-on"
-            : ""
-          }
-        "
-
-        onclick="
-          toggleCharacterStar(
-            '${escapeAttr(char["ID"])}'
-          )
-        "
-      >
-        ${
-          isCharacterStarred(char)
-            ? "★"
-            : "☆"
-        }
-      </button>
-      
+    card.innerHTML = `      
       ${(char["進化"] || [])
         .map((evo, index) =>
           makeEvolutionHtml(
