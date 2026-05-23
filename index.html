@@ -576,7 +576,7 @@ function renderList(){
     return true;
   });
 
-  updateSummary(filteredCharacters);
+  updateSummary(getSummaryTargetCharacters());
 
   document.getElementById("countText")
     .textContent =
@@ -633,6 +633,24 @@ card.innerHTML = `
 `;
 
     list.appendChild(card);
+  });
+}
+
+  function getSummaryTargetCharacters(){
+
+  const rarity =
+    document.getElementById("rarityFilter").value;
+
+  return characters.filter(char => {
+
+    if (
+      rarity &&
+      char["レアリティ"] !== rarity
+    ) {
+      return false;
+    }
+
+    return true;
   });
 }
 
@@ -741,6 +759,12 @@ function makeEvolutionHtml(
 
 function updateSummary(targetCharacters){
 
+  const rarity =
+  document.getElementById("rarityFilter").value;
+
+const rarityText =
+  rarity ? `（${escapeHtml(rarity)}）` : "";
+
   const total = {};
   const remaining = {};
 
@@ -762,18 +786,18 @@ function updateSummary(targetCharacters){
   });
 
   document.getElementById("summary").innerHTML = `
-    <div class="summary-title">
-      表示中の必要素材合計
-    </div>
+  <div class="summary-title">
+    表示中の必要素材合計${rarityText}
+  </div>
 
-    ${makeSummaryItems(total)}
+  ${makeSummaryItems(total)}
 
-    <div class="summary-title" style="margin-top:10px;">
-      未進化分の必要素材
-    </div>
+  <div class="summary-title" style="margin-top:10px;">
+    未進化分の必要素材${rarityText}
+  </div>
 
-    ${makeSummaryItems(remaining)}
-  `;
+  ${makeSummaryItems(remaining)}
+`;
 }
   
 function makeSummaryItems(obj){
