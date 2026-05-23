@@ -96,22 +96,22 @@
   },
 
   "紫獣結晶": {
-    "画像名": "image/material/紫獣結晶.png"
+    "画像名": "material_image/紫獣結晶.png"
   },
 
   "紅獣結晶": {
-    "画像名": "image/material/紅獣結晶.png"
+    "画像名": "material_image/紅獣結晶.png"
   },
 
   "蒼獣結晶": {
-    "画像名": "image/material/蒼獣結晶.png"
+    "画像名": "material_image/蒼獣結晶.png"
   },
 
   "翠獣結晶": {
-    "画像名": "image/material/翠獣結晶.png"
+    "画像名": "material_image/翠獣結晶.png"
   },
 
   "黄獣結晶": {
-    "画像名": "image/material/黄獣結晶.png"
+    "画像名": "material_image/黄獣結晶.png"
   }
 }
