@@ -942,13 +942,8 @@ function setupRarityFilter(){
 }
 
 function makeEvolutionKey(char, index){
-
-  const evo =
-    char["進化"][index];
-
-  return `
-    ${char["ID"]}_${evo["キャラ名"]}_${index}
-  `;
+  const evo = char["進化"][index];
+  return `${char["ID"]}_${evo["キャラ名"]}_${index}`;
 }
 
 function loadDoneData(){
