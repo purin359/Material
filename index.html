@@ -121,6 +121,7 @@ button{
   font-size:24px;
   cursor:pointer;
   color:#bbb;
+  z-index:2;
 }
 
 .star-button.star-on{
@@ -244,7 +245,7 @@ button{
 @media (max-width:600px){
 
   body{
-    padding:8px;
+    padding:6px;
   }
 
   .top-header{
@@ -266,60 +267,71 @@ button{
 
   .account-area{
     margin-left:auto;
-
     display:flex;
     align-items:center;
     justify-content:flex-end;
     gap:4px;
     flex-wrap:wrap;
-
     padding:4px;
     border-radius:10px;
-
     max-width:210px;
   }
 
   .account-area select{
     width:78px;
     height:26px;
-
     font-size:10px;
     padding:2px 4px;
   }
 
   .account-area button{
     height:26px;
-
     font-size:9px;
     padding:2px 5px;
-
     border-radius:6px;
   }
 
   .controls{
     display:flex;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
     gap:4px;
     margin-bottom:6px;
+    padding-bottom:2px;
+  }
+
+  .controls::-webkit-scrollbar{
+    display:none;
   }
 
   .search-input{
-    width:132px;
+    width:120px;
+    min-width:120px;
     height:28px;
-
     font-size:11px;
     padding:4px 6px;
+    box-sizing:border-box;
   }
 
   .controls button,
   .controls select,
   .tools-link-button{
+    flex-shrink:0;
     height:28px;
-
     font-size:11px;
-    padding:4px 6px;
-
+    padding:4px 8px;
     border-radius:6px;
+    box-sizing:border-box;
+    white-space:nowrap;
+  }
+
+  #starFilterButton{
+    min-width:62px;
+  }
+
+  #rarityFilter{
+    min-width:108px;
   }
 
   .summary{
@@ -334,6 +346,7 @@ button{
 
   .summary-list{
     gap:4px;
+    margin-bottom:6px !important;
   }
 
   .summary-item{
@@ -370,6 +383,11 @@ button{
     height:46px;
   }
 
+  .evolution > div{
+    flex:1;
+    min-width:0;
+  }
+
   .meta{
     font-size:10px;
     margin-bottom:1px;
@@ -379,7 +397,6 @@ button{
     font-size:14px;
     line-height:1.1;
     margin-bottom:1px;
-
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
@@ -396,38 +413,38 @@ button{
   .material-row{
     gap:3px;
     margin-top:2px;
-
     flex-wrap:nowrap;
     overflow-x:auto;
     overflow-y:hidden;
-
     padding-bottom:1px;
+  }
+
+  .material-row::-webkit-scrollbar{
+    display:none;
   }
 
   .material{
     width:40px;
     min-width:40px;
-
     padding:3px;
-
     border-radius:6px;
+    flex:0 0 auto;
   }
 
   .material-img{
     width:22px;
     height:22px;
-
     margin-bottom:0;
   }
 
   .material-count{
     font-size:10px;
     line-height:1;
+    margin-top:0;
   }
 
   .star-button{
     font-size:18px;
-
     top:2px;
     right:4px;
   }
