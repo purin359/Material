@@ -6,254 +6,47 @@
 <title>進化素材一覧</title>
 
 <style>
-body{
-  font-family:sans-serif;
-  padding:20px;
-  background:#f7f7f7;
-}
-
-.top-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:12px;
-}
-
-h1{
-  font-size:26px;
-  margin:0;
-}
-
-.controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-
-input,select{
-  font-size:16px;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-.search-input{
-  width:170px;
-}
-
-button{
-  font-size:14px;
-  padding:8px 10px;
-  border:none;
-  border-radius:8px;
-  background:#555;
-  color:white;
-  cursor:pointer;
-}
-
-.account-area{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-  padding:10px 12px;
-  background:#f5f5f5;
-  border:1px solid #ddd;
-  border-radius:14px;
-}
-
-.summary{
-  background:white;
-  border-radius:10px;
-  padding:12px 16px;
-  margin-bottom:10px;
-  box-shadow:0 1px 5px rgba(0,0,0,0.08);
-}
-
-.summary-title{
-  font-weight:bold;
-  margin-bottom:6px;
-}
-
-.summary-list{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.summary-item{
-  background:#f1f1f1;
-  border-radius:8px;
-  padding:5px 8px;
-  font-size:14px;
-}
-
-.count{
-  margin-bottom:10px;
-  color:#555;
-}
-
-.card{
-  position:relative;
-  background:white;
-  border-radius:10px;
-  padding:12px 16px;
-  margin-bottom:12px;
-  box-shadow:0 1px 6px rgba(0,0,0,0.08);
-}
-
-.star-button{
-  position:absolute;
-  top:8px;
-  right:10px;
-  border:none;
-  background:transparent;
-  font-size:24px;
-  cursor:pointer;
-  color:#bbb;
-}
-
-.star-button.star-on{
-  color:#f9a825;
-}
-
-.evolution{
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-  padding:8px 0;
-  border-bottom:1px solid #eee;
-}
-
-.evolution:last-child{
-  border-bottom:none;
-}
-
-.char-img{
-  width:72px;
-  height:72px;
-  object-fit:contain;
-  flex-shrink:0;
-}
-
-.name{
-  font-size:19px;
-  font-weight:bold;
-  margin-bottom:4px;
-}
-
-.meta{
-  color:#666;
-  font-size:14px;
-  margin-bottom:6px;
-}
-
-.material-row{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.material{
-  min-width:100px;
-  background:#f1f1f1;
-  border-radius:9px;
-  padding:7px;
-  text-align:center;
-  box-sizing:border-box;
-}
-
-.material.hit{
-  border:3px solid #ff3b30;
-}
-
-.material-name{
-  font-size:13px;
-  font-weight:bold;
-}
-
-.material-count{
-  margin-top:4px;
-  font-size:13px;
-  color:#666;
-}
-
-.done-button{
-  margin-top:6px;
-  background:#4CAF50;
-}
-
-.done-button.done{
-  background:#999;
-}
-
-.empty{
-  color:#999;
-}
-
-#starFilterButton.star-filter-on{
-  background:#f9a825;
-}
-
-.tools-link-button{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:8px 10px;
-  font-size:14px;
-  font-weight:bold;
-  color:#555;
-  text-decoration:none;
-  background:white;
-  border:1px solid #ccc;
-  border-radius:8px;
-}
-
-#topButton{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  width:52px;
-  height:52px;
-  border:none;
-  border-radius:50%;
-  background:#4CAF50;
-  color:white;
-  font-size:24px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,0.25);
-  z-index:9999;
-}
-
+body{font-family:sans-serif;padding:20px;background:#f7f7f7;color:#222;}
+.top-header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+h1{font-size:26px;margin:0;}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px;}
+input,select{font-size:16px;padding:10px;border-radius:8px;border:1px solid #ccc;}
+.search-input{width:170px;}
+button{font-size:14px;padding:8px 10px;border:none;border-radius:8px;background:#555;color:white;cursor:pointer;}
+.account-area{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 12px;background:#f5f5f5;border:1px solid #ddd;border-radius:14px;}
+.summary,.card{background:white;border-radius:10px;padding:12px 16px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+.summary-title{font-weight:bold;margin-bottom:6px;}
+.summary-list{display:flex;flex-wrap:wrap;gap:8px;}
+.summary-item{display:flex;align-items:center;gap:5px;background:#f1f1f1;border-radius:8px;padding:5px 8px;font-size:14px;}
+.summary-img{width:24px;height:24px;object-fit:contain;}
+.count{margin-bottom:10px;color:#555;}
+.card{position:relative;}
+.star-button{position:absolute;top:8px;right:10px;border:none;background:transparent;font-size:24px;cursor:pointer;color:#bbb;}
+.star-button.star-on{color:#f9a825;}
+.evolution{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eee;}
+.evolution:last-child{border-bottom:none;}
+.char-img{width:72px;height:72px;object-fit:contain;flex-shrink:0;}
+.name{font-size:19px;font-weight:bold;margin-bottom:4px;padding-right:35px;}
+.meta{color:#666;font-size:14px;margin-bottom:6px;}
+.material-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.material{width:92px;background:#f1f1f1;border-radius:9px;padding:7px;text-align:center;box-sizing:border-box;}
+.material.hit{border:3px solid #ff3b30;}
+.material-img{width:38px;height:38px;object-fit:contain;display:block;margin:0 auto 4px;}
+.material-name{font-size:12px;font-weight:bold;line-height:1.15;}
+.material-count{margin-top:3px;font-size:13px;color:#666;}
+.done-button{margin-top:4px;background:#4CAF50;}
+.done-button.done{background:#999;}
+.empty{color:#999;}
+#starFilterButton.star-filter-on{background:#f9a825;}
+.tools-link-button{display:flex;align-items:center;justify-content:center;padding:8px 10px;font-size:14px;font-weight:bold;color:#555;text-decoration:none;background:white;border:1px solid #ccc;border-radius:8px;}
+#topButton{position:fixed;right:18px;bottom:18px;width:52px;height:52px;border:none;border-radius:50%;background:#4CAF50;color:white;font-size:24px;font-weight:bold;box-shadow:0 3px 10px rgba(0,0,0,.25);z-index:9999;}
 @media(max-width:600px){
-  body{
-    padding:10px;
-  }
-
-  h1{
-    font-size:22px;
-  }
-
-  .card{
-    padding:12px;
-  }
-
-  .char-img{
-    width:64px;
-    height:64px;
-  }
-
-  .name{
-    font-size:18px;
-  }
-
-  .material{
-    min-width:92px;
-  }
+  body{padding:10px;}
+  h1{font-size:22px;}
+  .card{padding:12px;}
+  .char-img{width:64px;height:64px;}
+  .name{font-size:18px;}
+  .material{width:82px;}
 }
 </style>
 </head>
@@ -291,22 +84,27 @@ button{
 
 <script>
 let characters = [];
+let imageData = {};
 let filteredCharacters = [];
 let starFilterOnly = false;
 
-fetch("materials.json")
-  .then(res => res.json())
-  .then(data => {
-    characters = data;
-    setupRarityFilter();
-    renderAccountSelect();
-    renderList();
-  })
-  .catch(err => {
-    document.getElementById("list").innerHTML =
-      "<p class='empty'>materials.json を読み込めませんでした。</p>";
-    console.error(err);
-  });
+Promise.all([
+  fetch("materials.json").then(res => res.json()),
+  fetch("image.json").then(res => res.json())
+])
+.then(([materials, images]) => {
+  characters = materials;
+  imageData = images;
+
+  setupRarityFilter();
+  renderAccountSelect();
+  renderList();
+})
+.catch(err => {
+  document.getElementById("list").innerHTML =
+    "<p class='empty'>materials.json または image.json を読み込めませんでした。</p>";
+  console.error(err);
+});
 
 document.getElementById("charSearchInput").addEventListener("input", renderList);
 document.getElementById("materialSearchInput").addEventListener("input", renderList);
@@ -369,7 +167,9 @@ function renderList(){
         ID：${escapeHtml(char["ID"])} / ${escapeHtml(char["レアリティ"])}
       </div>
 
-      ${(char["進化"] || []).map((evo, index) => makeEvolutionHtml(char, evo, index, materialSearch)).join("")}
+      ${(char["進化"] || []).map((evo, index) =>
+        makeEvolutionHtml(char, evo, index, materialSearch)
+      ).join("")}
     `;
 
     list.appendChild(card);
@@ -385,6 +185,7 @@ function makeEvolutionHtml(char, evo, index, materialSearch){
       <img
         class="char-img"
         src="${escapeHtml(evo["画像名"])}"
+        alt="${escapeHtml(evo["キャラ名"])}"
         onerror="this.src='image/noimage.png'"
       >
 
@@ -406,6 +207,12 @@ function makeEvolutionHtml(char, evo, index, materialSearch){
 
             return `
               <div class="material ${hit ? "hit" : ""}">
+                <img
+                  class="material-img"
+                  src="${escapeHtml(getMaterialImage(m["名前"]))}"
+                  alt="${escapeHtml(m["名前"])}"
+                  onerror="this.src='image/noimage.png'"
+                >
                 <div class="material-name">${escapeHtml(m["名前"])}</div>
                 <div class="material-count">×${escapeHtml(m["個数"])}</div>
               </div>
@@ -415,6 +222,20 @@ function makeEvolutionHtml(char, evo, index, materialSearch){
       </div>
     </div>
   `;
+}
+
+function getMaterialImage(name){
+  const data = imageData[name];
+
+  if (typeof data === "string") {
+    return data;
+  }
+
+  if (data && data["画像名"]) {
+    return data["画像名"];
+  }
+
+  return "image/noimage.png";
 }
 
 function updateSummary(targetCharacters){
@@ -427,10 +248,12 @@ function updateSummary(targetCharacters){
       const done = isEvolutionDone(key);
 
       (evo["素材"] || []).forEach(m => {
-        total[m["名前"]] = (total[m["名前"]] || 0) + Number(m["個数"]);
+        const count = Number(m["個数"]) || 0;
+
+        total[m["名前"]] = (total[m["名前"]] || 0) + count;
 
         if (!done) {
-          remaining[m["名前"]] = (remaining[m["名前"]] || 0) + Number(m["個数"]);
+          remaining[m["名前"]] = (remaining[m["名前"]] || 0) + count;
         }
       });
     });
@@ -458,7 +281,12 @@ function makeSummaryItems(obj){
 
   return entries.map(([name, count]) => `
     <div class="summary-item">
-      ${escapeHtml(name)}：${count}
+      <img
+        class="summary-img"
+        src="${escapeHtml(getMaterialImage(name))}"
+        onerror="this.src='image/noimage.png'"
+      >
+      <span>${escapeHtml(name)}：${count}</span>
     </div>
   `).join("");
 }
