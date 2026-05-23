@@ -707,8 +707,45 @@ function makeSummaryItems(obj){
     `;
   }
 
-  return allEntries
-    .map(([name, count]) => `
+  let html = "";
+
+  let currentGroup = "";
+
+  allEntries.forEach(([name, count]) => {
+
+    let group = "";
+
+    if (name.includes("獣結晶")) {
+      group = "獣結晶";
+    }
+    else if (name.includes("獣石")) {
+      group = "獣石";
+    }
+    else if (name.includes("マタタビの種")) {
+      group = "種";
+    }
+    else if (name.includes("マタタビ")) {
+      group = "マタタビ";
+    }
+
+    // グループ切替時改行
+    if (group !== currentGroup) {
+
+      if (currentGroup !== "") {
+        html += `</div>`;
+      }
+
+      html += `
+        <div
+          class="summary-list"
+          style="margin-bottom:10px;"
+        >
+      `;
+
+      currentGroup = group;
+    }
+
+    html += `
       <div class="summary-item">
 
         <img
@@ -730,10 +767,14 @@ function makeSummaryItems(obj){
         </span>
 
       </div>
-    `)
-    .join("");
-}
+    `;
+  });
 
+  html += `</div>`;
+
+  return html;
+}
+  
 function getMaterialImage(name){
 
   const data =
