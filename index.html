@@ -294,7 +294,7 @@ let characters = [];
 let filteredCharacters = [];
 let starFilterOnly = false;
 
-fetch("evolution_materials.json")
+fetch("materials.json")
   .then(res => res.json())
   .then(data => {
     characters = data;
