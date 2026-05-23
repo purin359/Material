@@ -244,13 +244,17 @@ button{
 
 @media (max-width:600px){
 
+  body{
+    padding:3px;
+  }
+
   .top-header{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:6px;
+    gap:4px;
     flex-wrap:nowrap;
-    margin-bottom:6px;
+    margin-bottom:3px;
   }
 
   h1{
@@ -265,40 +269,40 @@ button{
     margin-left:auto;
     display:flex;
     align-items:center;
-    gap:3px;
+    gap:2px;
     flex-wrap:nowrap;
-    padding:3px;
-    border-radius:8px;
+    padding:2px;
+    border-radius:7px;
     max-width:none;
   }
 
   .account-area select{
-    width:70px;
-    height:22px;
+    width:64px;
+    height:20px;
     font-size:8px;
     padding:1px 3px;
   }
 
   .account-area button{
-    height:22px;
+    height:20px;
     font-size:7px;
-    padding:1px 4px;
+    padding:1px 3px;
     border-radius:5px;
     white-space:nowrap;
   }
 
   .controls{
-    display:grid;
-    grid-template-columns: 1fr 1fr auto auto auto;
+    display:flex;
     align-items:center;
-    gap:4px;
-    margin-bottom:6px;
+    flex-wrap:nowrap;
+    gap:3px;
+    margin-bottom:4px;
   }
 
   .search-input{
-    width:100%;
+    flex:1;
     min-width:0;
-    height:24px;
+    height:22px;
     font-size:9px;
     padding:2px 5px;
     box-sizing:border-box;
@@ -307,24 +311,133 @@ button{
   .controls button,
   .controls select,
   .tools-link-button{
-    height:24px;
+    flex-shrink:0;
+    height:22px;
     font-size:9px;
-    padding:2px 5px;
+    padding:1px 5px;
     border-radius:5px;
     box-sizing:border-box;
     white-space:nowrap;
-  }
-
-  #starFilterButton{
-    width:auto;
   }
 
   #rarityFilter{
     width:82px;
   }
 
-  .tools-link-button{
-    width:auto;
+  .summary{
+    padding:4px;
+    margin-bottom:4px;
+    border-radius:8px;
+  }
+
+  .summary-title{
+    font-size:10px;
+    margin-bottom:2px;
+  }
+
+  .summary-list{
+    gap:2px;
+    margin-bottom:4px !important;
+  }
+
+  .summary-item{
+    padding:1px 3px;
+    gap:1px;
+    border-radius:4px;
+    font-size:8px;
+  }
+
+  .summary-img{
+    width:14px;
+    height:14px;
+  }
+
+  .count{
+    font-size:10px;
+    margin-bottom:3px;
+  }
+
+  .card{
+    padding:4px 5px;
+    margin-bottom:4px;
+    border-radius:8px;
+  }
+
+  .evolution{
+    gap:4px;
+    padding:0;
+    align-items:flex-start;
+  }
+
+  .evolution > div{
+    flex:1;
+    min-width:0;
+  }
+
+  .char-img{
+    width:36px;
+    height:36px;
+  }
+
+  .meta{
+    font-size:8px;
+    margin-bottom:0;
+  }
+
+  .name{
+    font-size:11px;
+    line-height:1;
+    margin-bottom:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+  .done-button{
+    font-size:7px;
+    padding:1px 4px;
+    border-radius:4px;
+    margin-top:1px;
+  }
+
+  .material-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1px;
+    margin-top:1px;
+  }
+
+  .material{
+    width:30px;
+    min-width:30px;
+    padding:1px;
+    border-radius:4px;
+  }
+
+  .material-img{
+    width:15px;
+    height:15px;
+    margin-bottom:0;
+  }
+
+  .material-count{
+    font-size:7px;
+    line-height:1;
+    margin-top:0;
+  }
+
+  .star-button{
+    font-size:13px;
+    top:0;
+    right:1px;
+  }
+
+  #topButton{
+    width:36px;
+    height:36px;
+    font-size:16px;
+    right:6px;
+    bottom:6px;
   }
 }
 </style>
