@@ -243,76 +243,115 @@ button{
 
 @media (max-width:600px){
 
+  body{
+    padding:8px;
+  }
+
   .top-header{
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:6px;
+    align-items:flex-start;
+    justify-content:flex-start;
+    gap:8px;
     flex-wrap:nowrap;
     margin-bottom:6px;
   }
 
   h1{
-    font-size:18px;
+    font-size:16px;
+    line-height:1;
     margin:0;
     white-space:nowrap;
+    flex-shrink:0;
   }
 
   .account-area{
-    padding:4px 5px;
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
     gap:4px;
-    border-radius:9px;
+    flex-wrap:wrap;
+
+    padding:4px;
+    border-radius:10px;
+
+    max-width:210px;
   }
 
   .account-area select{
-    width:88px;
-    font-size:11px;
-    padding:4px;
-    height:30px;
+    width:78px;
+    height:26px;
+
+    font-size:10px;
+    padding:2px 4px;
   }
 
   .account-area button{
-    font-size:10px;
-    padding:4px 6px;
-    height:30px;
+    height:26px;
+
+    font-size:9px;
+    padding:2px 5px;
+
+    border-radius:6px;
   }
 
   .controls{
     display:flex;
     flex-wrap:wrap;
-    gap:5px;
-    margin-bottom:8px;
+    gap:4px;
+    margin-bottom:6px;
   }
 
   .search-input{
-    width:145px;
-    font-size:12px;
-    padding:6px 7px;
-    height:32px;
-    box-sizing:border-box;
+    width:132px;
+    height:28px;
+
+    font-size:11px;
+    padding:4px 6px;
   }
 
   .controls button,
   .controls select,
   .tools-link-button{
-    font-size:12px;
-    padding:6px 8px;
-    height:32px;
-    box-sizing:border-box;
+    height:28px;
+
+    font-size:11px;
+    padding:4px 6px;
+
+    border-radius:6px;
   }
 
   .summary{
-    padding:8px;
-    margin-bottom:8px;
+    padding:6px;
+    margin-bottom:6px;
   }
 
   .summary-title{
-    font-size:14px;
+    font-size:13px;
+    margin-bottom:4px;
+  }
+
+  .summary-list{
+    gap:4px;
+  }
+
+  .summary-item{
+    gap:3px;
+    padding:3px 5px;
+    border-radius:6px;
+    font-size:11px;
+  }
+
+  .summary-img{
+    width:20px;
+    height:20px;
+  }
+
+  .count{
+    font-size:12px;
     margin-bottom:5px;
   }
-}
-  
-@media (max-width:600px){
 
   .card{
     padding:6px 8px;
@@ -332,7 +371,7 @@ button{
   }
 
   .meta{
-    font-size:11px;
+    font-size:10px;
     margin-bottom:1px;
   }
 
@@ -350,10 +389,7 @@ button{
     font-size:10px;
     padding:2px 7px;
     border-radius:6px;
-
-    min-height:auto;
     line-height:1.3;
-
     margin:0;
   }
 
@@ -394,6 +430,14 @@ button{
 
     top:2px;
     right:4px;
+  }
+
+  #topButton{
+    width:46px;
+    height:46px;
+    font-size:20px;
+    right:10px;
+    bottom:10px;
   }
 }
 </style>
