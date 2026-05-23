@@ -617,28 +617,6 @@ function renderList(){
       document.createElement("div");
 
     card.className = "card";
-
-    card.innerHTML = `
-      <button
-        class="star-button
-          ${isCharacterStarred(char)
-            ? "star-on"
-            : ""
-          }
-        "
-
-        onclick="
-          toggleCharacterStar(
-            '${escapeAttr(char["ID"])}'
-          )
-        "
-      >
-        ${
-          isCharacterStarred(char)
-            ? "★"
-            : "☆"
-        }
-      </button>
       
       ${(char["進化"] || [])
         .map((evo, index) =>
