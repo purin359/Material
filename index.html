@@ -448,6 +448,20 @@ button{
     bottom:6px;
   }
 }
+
+  #newFilterButton{
+  font-size:15px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:#666;
+  color:white;
+  cursor:pointer;
+}
+
+#newFilterButton.new-filter-on{
+  background:#ff3b30;
+}
 </style>
 </head>
 
@@ -455,7 +469,7 @@ button{
 
 <div class="top-header">
 
-  <h1>進化素材一覧　ver.15.3.0対応</h1>
+  <h1>進化素材一覧　ver.15.4.0対応</h1>
 
   <div class="account-area">
     <select id="accountSelect" onchange="changeAccount()"></select>
@@ -500,6 +514,10 @@ button{
   第四のみ
 </button>
 
+  <button id="newFilterButton" onclick="toggleNewFilter()">
+  NEWのみ
+</button>
+
 </div>
 
 <div id="summary" class="summary"></div>
@@ -516,6 +534,7 @@ let imageData = {};
 let filteredCharacters = [];
 let starFilterOnly = false;
 let fourthOnly = false;
+let newFilterOnly = false;
 const SUMMARY_STATE_KEY =
   "nyanko_summary_state";
 
@@ -698,6 +717,13 @@ function renderList(){
         return !isEvolutionDone(key);
       }
 
+      if(
+        newFilterOnly &&
+        !isNewEvolution(evo)
+      ){
+        return false;
+      }
+
       return true;
     });
 }
@@ -750,6 +776,12 @@ function makeEvolutionHtml(
 
         <div class="name">
           ${escapeHtml(evo["キャラ名"])}
+
+          ${
+            isNewEvolution(evo)
+              ? `<span class="new-badge">NEW</span>`
+              : ""
+          }
         </div>
 
         <button
@@ -1484,6 +1516,30 @@ function saveSummaryState(state){
     SUMMARY_STATE_KEY,
     JSON.stringify(state)
   );
+}
+
+  // NEW
+  const NEW_CHARACTERS = [
+  "煉獄無双・成田甲斐"
+];
+
+function isNewEvolution(evo){
+  return NEW_CHARACTERS.includes(evo["キャラ名"]);
+}
+
+  function toggleNewFilter(){
+
+  newFilterOnly = !newFilterOnly;
+
+  const button =
+    document.getElementById("newFilterButton");
+
+  button.classList.toggle(
+    "new-filter-on",
+    newFilterOnly
+  );
+
+  renderList();
 }
 </script>
 
