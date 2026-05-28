@@ -1665,12 +1665,41 @@ function getSortVersion(char){
 }
 
   // NEW
-  const NEW_CHARACTERS = [
-  "煉獄無双・成田甲斐"
-];
+  function getLatestEvolutionVersion(){
+
+  let latest = "";
+
+  characters.forEach(char => {
+    (char["進化"] || []).forEach(evo => {
+      const ver = evo["進化Ver"];
+
+      if (!ver) return;
+
+      if (
+        !latest ||
+        compareVersion(ver, latest) > 0
+      ) {
+        latest = ver;
+      }
+    });
+  });
+
+  return latest;
+}
 
 function isNewEvolution(evo){
-  return NEW_CHARACTERS.includes(evo["キャラ名"]);
+
+  const latestVer =
+    getLatestEvolutionVersion();
+
+  if (!latestVer) {
+    return false;
+  }
+
+  return compareVersion(
+    evo["進化Ver"],
+    latestVer
+  ) === 0;
 }
 
   function toggleNewFilter(){
