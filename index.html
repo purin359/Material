@@ -689,15 +689,6 @@ function renderList(){
 
   filteredCharacters = characters.filter(char => {
 
-    if(verSortOn){
-      filteredCharacters.sort((a, b) => {
-        return compareVersion(
-          getSortVersion(a),
-          getSortVersion(b)
-        );
-      });
-    }
-
     if (
       rarity &&
       char["レアリティ"] !== rarity
@@ -740,6 +731,15 @@ function renderList(){
 
     return evolutionsToShow.length > 0;
   });
+
+  if(verSortOn){
+  filteredCharacters.sort((a, b) => {
+    return compareVersion(
+      getSortVersion(a),
+      getSortVersion(b)
+    );
+  });
+}
 
   document.getElementById("countText")
     .textContent =
