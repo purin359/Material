@@ -29,9 +29,16 @@ h1{
 
 .controls{
   display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:15px;
+}
+
+.control-row{
+  display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-bottom:15px;
+  align-items:center;
 }
 
 input,
@@ -196,6 +203,91 @@ button{
   background:#f9a825;
 }
 
+#fourthOnlyBtn.fourth-on{
+  background:#ff9800;
+}
+
+#newFilterButton{
+  font-size:15px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:#666;
+  color:white;
+  cursor:pointer;
+}
+
+#newFilterButton.new-filter-on{
+  background:#ff3b30;
+}
+
+#verSortButton{
+  font-size:15px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:#666;
+  color:white;
+  cursor:pointer;
+}
+
+#verSortButton.ver-sort-on{
+  background:#2196F3;
+}
+
+.new-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:6px;
+  padding:3px 8px;
+  border-radius:8px;
+  background:#ff3b30;
+  color:white;
+  font-size:13px;
+  font-weight:bold;
+  line-height:1;
+}
+
+.evolve-ver-badge{
+  position:absolute;
+  top:10px;
+  right:16px;
+  background:#2196F3;
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  padding:6px 10px;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+
+.summary-group{
+  margin-bottom:10px;
+}
+
+.summary-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  user-select:none;
+}
+
+.summary-title::after{
+  content:"▼";
+  font-size:12px;
+  color:#666;
+}
+
+.summary-group.closed .summary-title::after{
+  content:"▶";
+}
+
+.summary-group.closed .summary-content{
+  display:none;
+}
+
 .tools-link-button{
   display:flex;
   align-items:center;
@@ -225,88 +317,6 @@ button{
   box-shadow:0 3px 10px rgba(0,0,0,.25);
   z-index:9999;
 }
-
-  #fourthOnlyBtn.fourth-on{
-  background:#ff9800;
-}
-
-  .summary-group{
-  margin-bottom:10px;
-}
-
-.summary-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-  user-select:none;
-}
-
-.summary-title::after{
-  content:"▼";
-  font-size:12px;
-  color:#666;
-}
-
-.summary-group.closed .summary-title::after{
-  content:"▶";
-}
-
-.summary-group.closed .summary-content{
-  display:none;
-}
-
-  #newFilterButton{
-  font-size:15px;
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  background:#666;
-  color:white;
-  cursor:pointer;
-}
-
-#newFilterButton.new-filter-on{
-  background:#ff3b30;
-}
-
-  .new-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-left: 6px;
-
-  padding: 3px 8px;
-
-  border-radius: 8px;
-
-  background: #ff3b30;
-  color: white;
-
-  font-size: 13px;
-  font-weight: bold;
-
-  line-height: 1;
-}
-
-  .evolve-ver-badge{
-  position:absolute;
-  top:10px;
-  right:16px;
-
-  background:#2196F3;
-  color:white;
-
-  font-size:14px;
-  font-weight:bold;
-
-  padding:6px 10px;
-  border-radius:8px;
-
-  box-shadow:0 2px 6px rgba(0,0,0,.2);
-}
-
 
 @media (max-width:600px){
 
@@ -358,11 +368,19 @@ button{
   }
 
   .controls{
+    gap:3px;
+    margin-bottom:4px;
+  }
+
+  .control-row{
     display:flex;
     align-items:center;
     flex-wrap:nowrap;
     gap:3px;
-    margin-bottom:4px;
+  }
+
+  .second-row{
+    justify-content:flex-start;
   }
 
   .search-input{
@@ -374,8 +392,8 @@ button{
     box-sizing:border-box;
   }
 
-  .controls button,
-  .controls select,
+  .control-row button,
+  .control-row select,
   .tools-link-button{
     flex-shrink:0;
     height:22px;
@@ -388,6 +406,14 @@ button{
 
   #rarityFilter{
     width:82px;
+  }
+
+  #newFilterButton,
+  #verSortButton{
+    height:22px;
+    font-size:8px;
+    padding:0 5px;
+    border-radius:5px;
   }
 
   .summary{
@@ -492,45 +518,28 @@ button{
     margin-top:0;
   }
 
-  #topButton{
-    width:36px;
-    height:36px;
-    font-size:16px;
-    right:6px;
-    bottom:6px;
-  }
-
-  #newFilterButton{
-    height:22px;
-
-    font-size:8px;
-    padding:0 5px;
-
-    border-radius:5px;
-
-    white-space:nowrap;
-    flex-shrink:0;
-  }
-
   .new-badge{
-    margin-left:3px;
-
-    padding:1px 4px;
-
-    border-radius:5px;
-
-    font-size:7px;
-
+    margin-left:2px;
+    padding:0 3px;
+    border-radius:4px;
+    font-size:6px;
     line-height:1;
   }
 
   .evolve-ver-badge{
     top:4px;
     right:6px;
-
     font-size:7px;
     padding:2px 4px;
     border-radius:4px;
+  }
+
+  #topButton{
+    width:36px;
+    height:36px;
+    font-size:16px;
+    right:6px;
+    bottom:6px;
   }
 }
 </style>
@@ -558,36 +567,33 @@ button{
 
 <div class="controls">
 
-  <input
-    id="charSearchInput"
-    class="search-input"
-    placeholder="キャラ名で検索"
-  >
+  <div class="control-row">
+    <input id="charSearchInput" class="search-input" placeholder="キャラ名で検索">
 
-  <input
-    id="materialSearchInput"
-    class="search-input"
-    placeholder="素材名で検索"
-  >
+    <input id="materialSearchInput" class="search-input" placeholder="素材名で検索">
 
-  <button
-  id="starFilterButton"
-  onclick="toggleStarFilter()"
->
-  未進化
-</button>
+    <button id="starFilterButton" onclick="toggleStarFilter()">
+      未進化
+    </button>
 
-  <select id="rarityFilter">
-    <option value="">全レアリティ</option>
-  </select>
+    <select id="rarityFilter">
+      <option value="">全レアリティ</option>
+    </select>
 
-  <button id="fourthOnlyBtn">
-  第四のみ
-</button>
+    <button id="fourthOnlyBtn">
+      第四のみ
+    </button>
+  </div>
 
-  <button id="newFilterButton" onclick="toggleNewFilter()">
-  NEWのみ
-</button>
+  <div class="control-row second-row">
+    <button id="newFilterButton" onclick="toggleNewFilter()">
+      NEWのみ
+    </button>
+
+    <button id="verSortButton" onclick="toggleVerSort()">
+      Verソート
+    </button>
+  </div>
 
 </div>
 
@@ -606,6 +612,7 @@ let filteredCharacters = [];
 let starFilterOnly = false;
 let fourthOnly = false;
 let newFilterOnly = false;
+let verSortOn = false;
 const SUMMARY_STATE_KEY =
   "nyanko_summary_state";
 
@@ -681,6 +688,15 @@ function renderList(){
   updateSummary(getSummaryTargetCharacters());
 
   filteredCharacters = characters.filter(char => {
+
+    if(verSortOn){
+      filteredCharacters.sort((a, b) => {
+        return compareVersion(
+          getSortVersion(a),
+          getSortVersion(b)
+        );
+      });
+    }
 
     if (
       rarity &&
@@ -1593,6 +1609,59 @@ function saveSummaryState(state){
     SUMMARY_STATE_KEY,
     JSON.stringify(state)
   );
+}
+
+  function parseVersion(ver){
+  return String(ver ?? "")
+    .split(".")
+    .map(v => Number(v) || 0);
+}
+
+function compareVersion(a, b){
+  const av = parseVersion(a);
+  const bv = parseVersion(b);
+
+  const len = Math.max(av.length, bv.length);
+
+  for(let i = 0; i < len; i++){
+    const x = av[i] || 0;
+    const y = bv[i] || 0;
+
+    if(x !== y){
+      return x - y;
+    }
+  }
+
+  return 0;
+}
+
+// Ver
+function getSortVersion(char){
+  const evolutions = getEvolutionsToShow(char);
+
+  if(evolutions.length === 0){
+    return "";
+  }
+
+  return evolutions
+    .map(({ evo }) => evo["進化Ver"] || "")
+    .filter(v => v !== "")
+    .sort(compareVersion)[0] || "";
+}
+
+  function toggleVerSort(){
+
+  verSortOn = !verSortOn;
+
+  const button =
+    document.getElementById("verSortButton");
+
+  button.classList.toggle(
+    "ver-sort-on",
+    verSortOn
+  );
+
+  renderList();
 }
 
   // NEW
