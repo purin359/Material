@@ -806,7 +806,7 @@ function renderList(){
 
       if(
         newFilterOnly &&
-        !isNewEvolution(evo)
+        !isNewEvolution(evo, index)
       ){
         return false;
       }
@@ -871,7 +871,7 @@ function makeEvolutionHtml(
           ${escapeHtml(evo["キャラ名"])}
 
           ${
-            isNewEvolution(evo)
+            isNewEvolution(evo, index)
               ? `<span class="new-badge">NEW</span>`
               : ""
           }
@@ -1664,43 +1664,52 @@ function getSortVersion(char){
   renderList();
 }
 
+  // ==============================
   // NEW
-  function getLatestEvolutionVersion(){
-
-  let latest = "";
-
-  characters.forEach(char => {
-    (char["進化"] || []).forEach(evo => {
+  // 第三進化・第四進化で別々に最新Verを判定
+  // ==============================
+  
+  function getLatestEvolutionVersion(index){
+  
+    let latest = "";
+  
+    characters.forEach(char => {
+  
+      const evo = (char["進化"] || [])[index];
+  
+      if (!evo) return;
+  
       const ver = evo["進化Ver"];
-
+  
       if (!ver) return;
-
+  
       if (
         !latest ||
         compareVersion(ver, latest) > 0
       ) {
         latest = ver;
       }
+  
     });
-  });
-
-  return latest;
-}
-
-function isNewEvolution(evo){
-
-  const latestVer =
-    getLatestEvolutionVersion();
-
-  if (!latestVer) {
-    return false;
+  
+    return latest;
   }
-
-  return compareVersion(
-    evo["進化Ver"],
-    latestVer
-  ) === 0;
-}
+  
+  
+  function isNewEvolution(evo, index){
+  
+    const latestVer =
+      getLatestEvolutionVersion(index);
+  
+    if (!latestVer) {
+      return false;
+    }
+  
+    return compareVersion(
+      evo["進化Ver"],
+      latestVer
+    ) === 0;
+  }
 
   function toggleNewFilter(){
 
