@@ -783,37 +783,43 @@ function renderList(){
 
   function getEvolutionsToShow(char){
 
-  return (char["進化"] || [])
-    .map((evo, index) => ({
-      evo,
-      index
-    }))
-    .filter(({ evo, index }) => {
-
-      if (
-        fourthOnly &&
-        index !== 1
-      ) {
-        return false;
-      }
-
-      if (starFilterOnly) {
-        const key =
-          makeEvolutionKey(char, index);
-
-        return !isEvolutionDone(key);
-      }
-
-      if(
-        newFilterOnly &&
-        !isNewEvolution(evo, index)
-      ){
-        return false;
-      }
-
-      return true;
-    });
-}
+      return (char["進化"] || [])
+        .map((evo, index) => ({
+          evo,
+          index
+        }))
+        .filter(({ evo, index }) => {
+    
+          // 第四のみ
+          if (
+            fourthOnly &&
+            index !== 1
+          ) {
+            return false;
+          }
+    
+          // 未進化のみ
+          if (starFilterOnly) {
+    
+            const key =
+              makeEvolutionKey(char, index);
+    
+            if (isEvolutionDone(key)) {
+              return false;
+            }
+          }
+    
+          // NEWのみ
+          if (
+            newFilterOnly &&
+            !isNewEvolution(evo, index)
+          ) {
+            return false;
+          }
+    
+          return true;
+        });
+    }
   
   function getSummaryTargetCharacters(){
 
@@ -1669,32 +1675,67 @@ function getSortVersion(char){
   // 第三進化・第四進化で別々に最新Verを判定
   // ==============================
   
-  function getLatestEvolutionVersion(index){
-  
-    let latest = "";
-  
-    characters.forEach(char => {
-  
-      const evo = (char["進化"] || [])[index];
-  
-      if (!evo) return;
-  
-      const ver = evo["進化Ver"];
-  
-      if (!ver) return;
-  
-      if (
-        !latest ||
-        compareVersion(ver, latest) > 0
-      ) {
-        latest = ver;
-      }
-  
-    });
-  
-    return latest;
+  // ==============================
+// NEW
+// 第三進化・第四進化を別々に判定
+// ==============================
+
+function getLatestEvolutionVersion(index){
+
+  let latest = "";
+
+  characters.forEach(char => {
+
+    const evo =
+      (char["進化"] || [])[index];
+
+    if (!evo) return;
+
+    const ver = evo["進化Ver"];
+
+    if (!ver) return;
+
+    if (
+      !latest ||
+      compareVersion(ver, latest) > 0
+    ) {
+      latest = ver;
+    }
+
+  });
+
+  return latest;
+}
+
+function isNewEvolution(evo, index){
+
+  const latestVer =
+    getLatestEvolutionVersion(index);
+
+  if (!latestVer) {
+    return false;
   }
-  
+
+  return compareVersion(
+    evo["進化Ver"],
+    latestVer
+  ) === 0;
+}
+
+function toggleNewFilter(){
+
+  newFilterOnly = !newFilterOnly;
+
+  const button =
+    document.getElementById("newFilterButton");
+
+  button.classList.toggle(
+    "new-filter-on",
+    newFilterOnly
+  );
+
+  renderList();
+}
   
   function isNewEvolution(evo, index){
   
