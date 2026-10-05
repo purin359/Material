@@ -1670,47 +1670,54 @@ function getSortVersion(char){
   renderList();
 }
 
-  // ==============================
-  // NEW
-  // 第三進化・第四進化で別々に最新Verを判定
-  // ==============================
-  
-  // ==============================
+
+// ==============================
 // NEW
 // 第三進化・第四進化を別々に判定
 // ==============================
 
-function getLatestEvolutionVersion(index){
+function getLatestEvolutionVersion(stage){
 
   let latest = "";
 
   characters.forEach(char => {
 
-    const evo =
-      (char["進化"] || [])[index];
+    (char["進化"] || []).forEach(evo => {
 
-    if (!evo) return;
+      if (Number(evo["進化段階"]) !== stage) {
+        return;
+      }
 
-    const ver = evo["進化Ver"];
+      const ver = evo["進化Ver"];
 
-    if (!ver) return;
+      if (!ver) return;
 
-    if (
-      !latest ||
-      compareVersion(ver, latest) > 0
-    ) {
-      latest = ver;
-    }
+      if (
+        !latest ||
+        compareVersion(ver, latest) > 0
+      ) {
+        latest = ver;
+      }
+
+    });
 
   });
 
   return latest;
 }
 
-function isNewEvolution(evo, index){
+
+function isNewEvolution(evo){
+
+  const stage =
+    Number(evo["進化段階"]);
+
+  if (stage !== 3 && stage !== 4) {
+    return false;
+  }
 
   const latestVer =
-    getLatestEvolutionVersion(index);
+    getLatestEvolutionVersion(stage);
 
   if (!latestVer) {
     return false;
@@ -1721,38 +1728,8 @@ function isNewEvolution(evo, index){
     latestVer
   ) === 0;
 }
-
+  
 function toggleNewFilter(){
-
-  newFilterOnly = !newFilterOnly;
-
-  const button =
-    document.getElementById("newFilterButton");
-
-  button.classList.toggle(
-    "new-filter-on",
-    newFilterOnly
-  );
-
-  renderList();
-}
-  
-  function isNewEvolution(evo, index){
-  
-    const latestVer =
-      getLatestEvolutionVersion(index);
-  
-    if (!latestVer) {
-      return false;
-    }
-  
-    return compareVersion(
-      evo["進化Ver"],
-      latestVer
-    ) === 0;
-  }
-
-  function toggleNewFilter(){
 
   newFilterOnly = !newFilterOnly;
 
