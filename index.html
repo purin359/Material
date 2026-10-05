@@ -120,13 +120,14 @@ button{
 }
 
 .evolution{
+  position:relative;
   display:flex;
   gap:12px;
   align-items:flex-start;
   padding:8px 0;
   border-bottom:1px solid #eee;
 }
-
+  
 .evolution:last-child{
   border-bottom:none;
 }
@@ -812,7 +813,7 @@ function renderList(){
           // NEWのみ
           if (
             newFilterOnly &&
-            !isNewEvolution(evo, index)
+            !isNewEvolution(evo)
           ) {
             return false;
           }
@@ -877,7 +878,7 @@ function makeEvolutionHtml(
           ${escapeHtml(evo["キャラ名"])}
 
           ${
-            isNewEvolution(evo, index)
+            isNewEvolution(evo)
               ? `<span class="new-badge">NEW</span>`
               : ""
           }
@@ -1670,23 +1671,18 @@ function getSortVersion(char){
   renderList();
 }
 
-
 // ==============================
 // NEW
-// 第三進化・第四進化を別々に判定
+// 全進化の中で最新VerならNEW
 // ==============================
 
-function getLatestEvolutionVersion(stage){
+function getLatestEvolutionVersion(){
 
   let latest = "";
 
   characters.forEach(char => {
 
     (char["進化"] || []).forEach(evo => {
-
-      if (Number(evo["進化段階"]) !== stage) {
-        return;
-      }
 
       const ver = evo["進化Ver"];
 
@@ -1709,15 +1705,8 @@ function getLatestEvolutionVersion(stage){
 
 function isNewEvolution(evo){
 
-  const stage =
-    Number(evo["進化段階"]);
-
-  if (stage !== 3 && stage !== 4) {
-    return false;
-  }
-
   const latestVer =
-    getLatestEvolutionVersion(stage);
+    getLatestEvolutionVersion();
 
   if (!latestVer) {
     return false;
@@ -1728,7 +1717,8 @@ function isNewEvolution(evo){
     latestVer
   ) === 0;
 }
-  
+
+
 function toggleNewFilter(){
 
   newFilterOnly = !newFilterOnly;
